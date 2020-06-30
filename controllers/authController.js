@@ -100,7 +100,7 @@ exports.protect = catchAsync(async (req, res, next) => {
     token,
     process.env.JWT_SECRET
   );
-  console.log(decodedPayload);
+  // console.log(decodedPayload);
 
   // 3) Checking if user still exists
   const currentUser = await User.findById(decodedPayload.id);
@@ -133,7 +133,7 @@ exports.isLoggedIn = async (req, res, next) => {
         req.cookies.jwt,
         process.env.JWT_SECRET
       );
-      console.log(decodedPayload);
+      // console.log(decodedPayload);
 
       // 2) Checking if user still exists
       const currentUser = await User.findById(decodedPayload.id);
@@ -182,7 +182,7 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
   // 2) Generate the ramdom reset token
   const resetToken = user.createPasswordResetToken();
   await user.save({ validateBeforeSave: false });
-  console.log('Reset token:' + resetToken);
+  // console.log('Reset token:' + resetToken);
 
   // 3) Send it to user's email
   try {
